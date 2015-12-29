@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+static int
+copy_all(int *src, int len1, int *dst, int len2)
+{
+
+	int i = 0;
+
+	if (src == NULL || dst == NULL || (len1 >= len2)) {
+		exit(0);
+	}
+
+	for(i = 0; i < len1; i++) {
+		dst[i] =src[i];
+	}
+
+	return i;
+}
+
+static inline int*
+alloc_mem(int num_ele)
+{
+	return (int*)malloc(sizeof(int)*num_ele);
+}
+
+static int
+assign_elements(int total, int **arr, int len)
+{
+	int i = 0;
+	int *dst = NULL;
+	int ele;
+	int copy_times = 0;
+	
+	for(i = 0; i < total; i++) {
+		scanf("%d", &ele);
+		printf("\n %d", ele);
+
+		if (len < (i+1)) {
+			dst = alloc_mem(len*2);
+			if (dst == NULL) {
+				exit(0);
+			}
+			copy_times += copy_all(*arr, len, dst, len *2);
+			free(*arr);
+			*arr = dst;
+			len = len*2;
+		}
+
+		*arr[i] = ele;
+	}
+
+	return copy_times;
+}
+
+int main(int argc, char *argv[])
+{
+	int i =0;
+	int total = 0;
+	int *arr = (int*)malloc(sizeof(int));
+
+	if (arr == NULL) {
+		exit(0);
+	}
+	scanf("%d", &total);
+
+	printf("\n # of copies is = %d \n", assign_elements(total, &arr, 1));
+	return 0;
+}
+
+
+
+
+
+
+
+

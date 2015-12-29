@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+typedef struct node_s{
+	int val;
+	struct node_s *left;
+	struct node_s *right;
+}node;
+
+node* create_node(int val);
+
+
+int main(int argc, char *argv[])
+{
+
+
+
+
+node*
+create_node(int val)
+{
+	node* t_node = NULL;
+	t_node = (node*) malloc(sizeof(node));
+
+	if (t_node == NULL) {
+		return NULL;
+	}
+
+	t_node->left = NULL;
+	t_node->right = NULL;
+
+	t_node->val = val;
+
+	return t_node;
+}
+
+node*
+add_node(node *i*p_node, node *root, int val)
+{
+
+	if (p_node == NULL) {
+		return create_node(val);
+	} else if (root == NULL) {
+		
+
+	if (root->val < val) {
+		add_node(root->right, val);
+	} else if (root->val > val) {
+		add_node(root->left, val);
+	} else {
+		return NULL

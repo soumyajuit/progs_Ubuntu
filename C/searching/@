@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+
+
+
+
+
+
+int
+qsort_comp(const void *ele1, const void *ele2)
+{
+	return ((*((int*)ele1)) -  (*((int*)ele2))
